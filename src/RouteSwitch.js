@@ -15,23 +15,55 @@ const RouteSwitch = () => {
       name: "T-Shirt",
       price: "10,99€",
       img: tshirtImg,
-      id: "1"
+      id: "001"
     },
     {
       name: "Hoody",
       price: "34,99€",
       img: hoodyImg,
-      id: "2"
+      id: "002"
     },
     {
       name: "Jeans",
       price: "19,39€",
       img: jeansImg,
-      id: "3"
+      id: "003"
     },
   ]
 
-  const [itemsInCart, setItemsInCart] = useState(0);
+  const [itemsInCart, setItemsInCart] = useState([]);
+
+  function addToCart(e) {
+    let id = e.target.parentNode.dataset.id;
+    const item = items.filter((ele) => ele.id === id);
+    setItemsInCart([...itemsInCart, item[0]])
+
+    let mergedItemsId = itemsInCart.reduce((acc, cur) => {
+      if(!acc[cur.id]) {
+        acc[cur.id] = 1;
+      }
+      acc[cur.id] = acc[cur.id] + 1;
+      return acc;
+    }, {})
+
+    let mergedItems = [];
+    for(let prop in mergedItemsId) {
+      let id = prop;
+      let amount = mergedItemsId[prop];
+      let item = getItemById(id, items);
+    
+      mergedItems.push({
+        item,
+        amount,
+      })
+    }
+    setItemsInCart(mergedItems)
+  }
+
+  function getItemById(id, items) {
+    return items.filter((ele) => ele.id === id)[0]
+    
+  }
 
   return (
     <>
@@ -39,7 +71,7 @@ const RouteSwitch = () => {
         <Nav itemsInCart={itemsInCart}/>
         <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/products" element={<Products items={items}/>} />
+            <Route path="/products" element={<Products items={items} addToCart={addToCart}/>} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/card" element={<Card />} />
         </Routes>

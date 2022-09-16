@@ -18,7 +18,7 @@ function Nav(props) {
                     <li>Contact</li>
                 </Link>
                 <Link to="/card">
-                    <li>Card {props.itemsInCart}</li>
+                    <li>Card</li>
                 </Link>
             </ul>
         </nav>
