@@ -1,0 +1,26 @@
+nav {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    padding: 30px 80px;
+    gap: 20px;
+    justify-content: space-around;
+    background-color: rgb(20, 20, 20);
+    font-family: sans-serif;
+}
+
+nav h1 {
+    font-size: 4em;
+    color: rgb(204, 255, 204);
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+ul li {
+    font-size: 1.2em;
+    color: rgb(214, 206, 206);
+}

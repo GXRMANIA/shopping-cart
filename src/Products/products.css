@@ -1,0 +1,22 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.product img {
+    height: 250px;
+    width: 200px;
+
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 30px;
+    gap: 4px;
+}
+
+.product button {
+    width: 200px;
+}

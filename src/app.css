@@ -1,0 +1,26 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.home {
+    background-image: url("./images/models.jpg");
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home button {
+    padding: 20px 40px;
+    font-size: 2em;
+    border-radius: 20px;
+    border: none;
+    background-color: black;
+    color: aqua;
+    font-weight: 700;
+    cursor: pointer;
+}
