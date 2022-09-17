@@ -1,17 +1,19 @@
 nav {
     display: flex;
+    width: 100%;
     align-items: center;
-    min-height: 50px;
+    min-height: 20%;
     padding: 30px 80px;
     gap: 20px;
     justify-content: space-around;
-    background-color: rgb(20, 20, 20);
-    font-family: sans-serif;
+    background-color: rgba(20, 20, 20, 0.37);
+    font-family: 'Montserrat', sans-serif;
+    z-index: 2;
 }
 
 nav h1 {
     font-size: 4em;
-    color: rgb(204, 255, 204);
+    color: rgb(236, 245, 236);
 }
 
 ul {
@@ -21,6 +23,7 @@ ul {
 }
 
 ul li {
-    font-size: 1.2em;
-    color: rgb(214, 206, 206);
+    font-size: 1.4em;
+    font-weight: bold;
+    color: rgb(236, 245, 236);
 }

@@ -2,23 +2,24 @@ import './nav.css'
 import { Link } from 'react-router-dom'
 
 function Nav(props) {
+
     return (
         <nav>
-                <Link to="/">
-                    <h1>FakeStore</h1>
+                <Link to="/" style={{textDecoration: 'none'}}>
+                    <h1>YogaStore</h1>
                 </Link>
             <ul>
-                <Link to="/">
+                <Link to="/" style={{textDecoration: 'none'}}>
                     <li>Home</li>
                 </Link>
-                <Link to="/products">
+                <Link to="/products" style={{textDecoration: 'none'}}>
                     <li>Products</li>
                 </Link>
-                <Link to="/contact">
+                <Link to="/contact" style={{textDecoration: 'none'}}>
                     <li>Contact</li>
                 </Link>
-                <Link to="/card">
-                    <li>Card</li>
+                <Link to="/card" style={{textDecoration: 'none'}}>
+                    <li>Card {props.itemsInCart.reduce((acc, cur) => acc + cur.amount, 0)}</li>
                 </Link>
             </ul>
         </nav>

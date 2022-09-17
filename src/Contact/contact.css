@@ -1,0 +1,9 @@
+.contact img {
+    width: 70%;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

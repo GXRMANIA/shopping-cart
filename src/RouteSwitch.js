@@ -4,41 +4,56 @@ import Card from "./Card/Card";
 import Contact from "./Contact/Contact";
 import Nav from "./Nav/Nav";
 import Products from "./Products/Products";
-import tshirtImg from "./images/tshirt.jpg"
-import jeansImg from "./images/jeans.jpg"
-import hoodyImg from "./images/hoody.jpg"
-import React, { useState } from 'react';
+import black from "./images/black.jpg"
+import blue from "./images/blue.jpg"
+import brown from "./images/brown.jpg"
+import cosmic from "./images/cosmic.jpg"
+import striped from "./images/striped.jpg"
+import React, { useState, useEffect} from 'react';
 
 const RouteSwitch = () => {
   const items = [
     {
-      name: "T-Shirt",
+      name: "Mindful Mate black",
       price: "10,99€",
-      img: tshirtImg,
+      img: black,
       id: "001"
     },
     {
-      name: "Hoody",
+      name: "Lotuscrafts blue",
       price: "34,99€",
-      img: hoodyImg,
+      img: blue,
       id: "002"
     },
     {
-      name: "Jeans",
+      name: "Melon Brown",
       price: "19,39€",
-      img: jeansImg,
+      img: brown,
       id: "003"
+    },
+    {
+      name: "Cosmic Galaxy",
+      price: "19,39€",
+      img: cosmic,
+      id: "004"
+    },
+    {
+      name: "Yogamatte Striped",
+      price: "19,39€",
+      img: striped,
+      id: "005"
     },
   ]
 
-  const [itemsInCart, setItemsInCart] = useState([]);
+  const [itemsInCart, setItemsInCart] = useState([])
+  const [tempItems, setTempItems] = useState([])
 
   function addToCart(e) {
     let id = e.target.parentNode.dataset.id;
     const item = items.filter((ele) => ele.id === id);
-    setItemsInCart([...itemsInCart, item[0]])
-
-    let mergedItemsId = itemsInCart.reduce((acc, cur) => {
+    console.log(tempItems)
+    setTempItems([...tempItems, item[0]])
+    let mergedItemsId = tempItems.reduce((acc, cur) => {
       if(!acc[cur.id]) {
         acc[cur.id] = 1;
       }
@@ -65,6 +80,21 @@ const RouteSwitch = () => {
     
   }
 
+  function changeAmount(e) {
+    let id = e.target.parentNode.parentNode.dataset.id;
+    let value = e.target.textContent;
+    let updatedItems = itemsInCart.map(ele => {
+      if(ele.item.id === id) {
+        if(value === "+") ele.amount++;
+        else ele.amount--;
+      }
+      return ele;
+    })
+    // check if amount is zero
+    let onlyItemsInCartWithAmount = updatedItems.filter(ele => ele.amount > 0)
+    setItemsInCart(onlyItemsInCartWithAmount)
+  }
+
   return (
     <>
         <BrowserRouter>
@@ -73,7 +103,7 @@ const RouteSwitch = () => {
             <Route path="/" element={<App />} />
             <Route path="/products" element={<Products items={items} addToCart={addToCart}/>} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/card" element={<Card />} />
+            <Route path="/card" element={<Card itemsInCart={itemsInCart} changeAmount={changeAmount}/>} />
         </Routes>
         </BrowserRouter>
     </>
