@@ -97,7 +97,7 @@ const RouteSwitch = () => {
 
   return (
     <>
-        <BrowserRouter>
+        <BrowserRouter basename="/app">
         <Nav itemsInCart={itemsInCart}/>
         <Routes>
             <Route path="/" element={<App />} />
